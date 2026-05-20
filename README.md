@@ -111,10 +111,10 @@ REGISTER NO: 212225040157
 
 
 ## OUTPUT - SERVER SIDE:
-Screenshot 2026-05-20 204913.png
+![alt text](<Screenshot 2026-05-20 204913.png>)
 
 ## OUTPUT - WEBPAGE:
-Screenshot 2026-05-20 204950.png
+![alt text](<Screenshot 2026-05-20 204950.png>)
 
 ## RESULT:
 The a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts is created successfully.
