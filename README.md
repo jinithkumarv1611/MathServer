@@ -1,5 +1,5 @@
 # Ex.04 Design a Website for Server Side Processing
-## Date:
+## Date:20-05-2026
 
 ## AIM:
 To create a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts.
@@ -43,13 +43,78 @@ Render the result to the HTML template.
 Publish the website in Localhost.
 
 ## PROGRAM:
+```python
+urls.py
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('gstapp.urls')),
+]
+
+views.py
+from django.shortcuts import render
+
+def gst(request):
+
+    result = ""
+
+    if request.method == 'POST':
+
+        price = float(request.POST.get('price'))
+        gst = float(request.POST.get('gst'))
+
+        total = price + (price * gst / 100)
+
+        print("Total Bill Amount =", total)
+
+        result = "Total Bill Amount = ₹ " + str(total)
+
+    return render(request, 'gst.html', {'result': result})
+
+gst.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GST Calculator</title>
+</head>
+
+<body>
+
+<h1>GST Calculator</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Price:</label>
+    <input type="number" name="price"><br><br>
+
+    <label>GST Percentage:</label>
+    <input type="number" name="gst"><br><br>
+
+    <input type="submit" value="Calculate">
+
+</form>
+
+<h2>{{ result }}</h2>
+
+</body>
+</html>
+
+DEVELOPED BY: JINITH KUMAR V
+REGISTER NO: 212225040157
+```
+
 
 
 ## OUTPUT - SERVER SIDE:
-
+Screenshot 2026-05-20 204913.png
 
 ## OUTPUT - WEBPAGE:
-
+Screenshot 2026-05-20 204950.png
 
 ## RESULT:
 The a web page to calculate total bill amount with GST from price and GST percentage using server-side scripts is created successfully.
